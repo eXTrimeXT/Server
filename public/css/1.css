@@ -1,6 +1,37 @@
+.forms{
+    border: 4px dashed  rgb(224, 179, 217) ;
+    /* border-top: groove rgb(255, 0, 0);
+    border-bottom: dashed rgba(49, 241, 31);
+    border-left: dashed rgba(49, 241, 31);
+    border-right: dotted rgba(49, 241, 31); */
+    padding: 10px;
+    width: max-content;
+    margin-left: 525px;
+
+}
+
 body{
     font-size: larger, solid;
-    text-decoration: underline;
-    background-image: linear-gradient(75deg, red, green);
+    background-image: linear-gradient(120deg, rgb(170, 214, 242), rgb(182, 244, 180));
+    font-size: 1.8rem;
+    text-align: center;
+    height:800px;
+    word-wrap: break-word;
     
+}
+label{
+    text-decoration: underline;
+}
+.c-button {
+    appearance: none;
+    border: 0;
+    border-radius: 5px;
+    background: #4676D7;
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 16px;
+    
+}
+.c-button:hover{
+    background-color: blue;
 }
