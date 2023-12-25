@@ -38,23 +38,23 @@ exports.getNewsAll = async function(req, res){
 
 exports.getNews = async function(req, res){
     let m = await Models.getOneNews(req.params.idNews);
-    res.render('adminArticleShow', {data:m});
+    res.render('adminNewsShow', {data:m});
 };
 
 exports.addNews = async function(req, res){
     await Models.addOneNews(req.body);
     let m = await Models.getAllNews();
-    res.render('adminArticles', {data:m});
+    res.render('adminNews', {data:m});
 };
 
 exports.editNews = async function(req, res){
     await Models.editOneArticle(req.body);
     let m = await Models.getOneArticle(req.body.idNews);
-    res.render('adminArticleShow', {data:m});
+    res.render('adminNewsShow', {data:m});
 };
 
 exports.deleteNews = async function(req, res){
     await Models.deleteOneArticle(req.body.idNews);
     let m = await Models.getAllArticle();
-    res.render('adminArticles', {data:m});
+    res.render('adminNews', {data:m});
 };

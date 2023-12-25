@@ -1,21 +1,21 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/1.css">
+    <meta charset="UTF-8">
 </head>
 <body>
     <% data.forEach(function(item) { %>
-    <p><a href='http://localhost:3000/admin/<%= item.idArticle %>'><%= item.titleArticle %> </a>
+    <p><a href='http://localhost:3000/admin/articles/<%= item.idArticle %>'><%= item.titleArticle %> </a>
         <p>
             <% item.descriptionArticle %>
         </p>
     <% }); %>
 
-    <div class="form">
+    <div class="forms">
         <h2>Добавить статью</h2>
 
-        <form action="http://localhost:3000/admin/addArticle" method="post">
+        <form action="http://localhost:3000/admin/articles/addArticle" method="post">
             <label for="titleArticle">Название статьи</label>
             <input type="text" name="titleArticle" id="titleArticle" required>
             <p>
@@ -26,7 +26,7 @@
                 <label for="descriptionArticle">Описание статьи</label>
                 <input type="text" name="descriptionArticle" id="descriptionArticle">
             </p>
-            <button type="submit" id="sendArticle">Создать статью</button>
+            <button type="submit" id="sendArticle" class = "c-button">Создать статью</button>
         </form>
     </div>
     <script>
@@ -36,10 +36,10 @@
             let article = {
                 'titleArticle': document.querySelector("#titleArticle").value,
                 'textArticle': document.querySelector("#textArticle").value,
-                'description': document.querySelector("#descriptionArticle").value,
+                'descriptionArticle': document.querySelector("#descriptionArticle").value,
             }
             console.log(article);
-            let promise = fetch('http://localhost:3000/admin/addArticle', {
+            let promise = fetch('http://localhost:3000/admin/articles/addArticle', {
                 method: 'POST',
                 headers:{
                     'Content-Type': 'application/json;charset=utf-8'

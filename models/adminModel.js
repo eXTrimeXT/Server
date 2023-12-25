@@ -35,7 +35,7 @@ exports.getOneArticle = async function(req, res){
 
 exports.addOneArticle = async function(req, res){
     let sql = "INSERT INTO article VALUES ('', ?, ?, ?)";
-    filter = [req.titleArticle, req.textArticle, req.description];
+    filter = [req.titleArticle, req.textArticle, req.descriptionArticle];
     await connection.query(sql, filter)
     .then(data =>{  
     })
@@ -47,7 +47,7 @@ exports.addOneArticle = async function(req, res){
 exports.editOneArticle = async function(req, res){
     let arr = [];
     let sql = "UPDATE article SET titleArticle=?, textArticle=?, descriptionArticle=? WHERE idArticle=?";
-    filter = [req.titleArticle, req.textArticle, req.description, req.idArticle];
+    filter = [req.titleArticle, req.textArticle, req.descriptionArticle, req.idArticle];
     await connection.query(sql, filter)
     .then(data =>{
         for (let i = 0; i < data[0].length; i++) {

@@ -5,8 +5,8 @@ var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({extended : false});
 const jsonParser = express.json();
 
-router.get('/', newsController.getAllNews);
-router.get('/:idArticle', newsController.getOneNews);
+router.get('/', newsController.getNewsAll);
+router.get('/:idArticle', newsController.getNews);
 
 console.log('route/news');
 

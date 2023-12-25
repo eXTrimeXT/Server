@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,9 +9,9 @@
     <p>
         <%= data[0].textArticle %>
     </p>
-    <div class="form">
+    <div class="forms">
         <h2>Изменить статью</h2>
-        <form action="http://localhost:3000/admin/editArticle" method="post">
+        <form action="http://localhost:3000/admin/articles/editArticle" method="post">
             <label for="titleArticle">Название статьи</label>
             <input type="text" name="titleArticle" id="titleArticle" required value="<%= data[0].titleArticle %>">
             <p>
@@ -22,22 +22,22 @@
                 <label for="descriptionArticle">Описание статьи</label>
                 <input type="text" name="descriptionArticle" id="descriptionArticle" value="<%= data[0].descriptionArticle %>">
             </p>
-            <button type="submit" id="editdArticle">Редактировать статью</button>
+            <button type="submit" id="editArticle">Редактировать статью</button>
             <button type="submit" id="deleteArticle">Удалить статью</button>
-            <p><a href="http://localhost:3000/admin/">Вернуться к списку статей</a></p>
+            <p><a href="http://localhost:3000/admin/articles/">Вернуться к списку статей</a></p>
         </form>
     </div>
 
     <script>
-        document.querySelector("#editdArticle").onclick = function(){
+        document.querySelector("#editArticle").onclick = function(){
             event.preventDefault();
             let article = {
                 'idArticle':location.href.split("/").at(-1),
                 'titleArticle': document.querySelector("#titleArticle").value,
                 'textArticle': document.querySelector("#textArticle").value,
-                'description': document.querySelector("#descriptionArticle").value,
+                'descriptionArticle': document.querySelector("#descriptionArticle").value,
             }
-            let promise = fetch('http://localhost:3000/admin/editArticle', {
+            let promise = fetch('http://localhost:3000/admin/articles/editArticle', {
                 method: 'POST',
                 headers:{
                     'Content-Type': 'application/json;charset=utf-8'
@@ -54,15 +54,14 @@
             let article={
                 'idArticle': location.href.split("/").at(-1),
             }
-            let promise = fetch('http://localhost:3000/admin/deleteArticle', {
+            let promise = fetch('http://localhost:3000/admin/articles/deleteArticle', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json;charset=utf-8'
                 },
                 body: JSON.stringify(article)
             })
-            .then(response=> document.location="http://localhost:3000/admin/")
-            .then(response=> console.log("adminArticleShow.ejs"))
+            .then(response=> document.location="http://localhost:3000/admin/articles/")
             .catch((error)=>{
                 console.log(error);
             });

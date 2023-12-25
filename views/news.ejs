@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../public/css/1.css">
+</head> 
+<body>
+    <% data.forEach(function(item) { %>
+    <p><a href='http://localhost:3000/news/<%= item.idArticle %>'><%= item.titleNews %> </a>
+        <p>
+            <% item.descriptionNews %>
+        </p>
+    <% }); %>
+</body>
+</html>

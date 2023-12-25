@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/css/1.css">
+    <meta charset="UTF-8">
+</head>
+<body>
+    <% data.forEach(function(item) { %>
+    <p><a href='http://localhost:3000/admin/news/<%= item.idNews %>'><%= item.titleNews %> </a>
+        <p>
+            <% item.descriptionNews %>
+        </p>
+    <% }); %>
+
+    <div class="forms">
+        <h2>Добавить новость</h2>
+
+        <form action="http://localhost:3000/admin/news/addNews" method="post">
+            <label for="titleNews">Название новости</label>
+            <input type="text" name="titleNews" id="titleNews" required>
+            <p>
+                <label for="textNews">Текст новости</label>
+                <textarea rows="10" cols="30" name = "textNews" id="textNews"></textarea>
+            </p>
+            <p>
+                <label for="descriptionNews">Описание новости</label>
+                <input type="text" name="descriptionNews" id="descriptionNews">
+            </p>
+            <button type="submit" id="sendNews" class="c-button">Создать новость</button>
+        </form>
+    </div>
+    <script>
+        document.querySelector("#sendNews").onclick = function(){
+            event.preventDefault();
+            location.reload();
+            let one_news = {
+                'titleNews': document.querySelector("#titleNews").value,
+                'textNews': document.querySelector("#textNews").value,
+                'descriptionNews': document.querySelector("#descriptionNews").value,
+            }
+            let promise = fetch('http://localhost:3000/admin/news/addNews', {
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                body: JSON.stringify(one_news)
+            })
+            .then(response=> response.json)
+            .catch((error)=>{
+                console.log(error);
+            });
+        }
+    </script>   
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/1.css">
+</head>
+<body>
+    <%= data[0].titleNews %>
+    <p>
+        <%= data[0].textNews %>
+    </p>
+    <div class="forms">
+        <h2>Изменить новость</h2>
+        <form action="http://localhost:3000/admin/news/editNews" method="post">
+            <label for="titleNews">Название новости</label>
+            <input type="text" name="titleNews" id="titleNews" required value="<%= data[0].titleNews %>">
+            <p>
+                <label for="textNews">Текст новости</label>
+                <textarea rows="10" cols="30" id="textNews"><%= data[0].textNews %></textarea>
+            </p>
+            <p>
+                <label for="descriptionNews">Описание новости</label>
+                <input type="text" name="descriptionNews" id="descriptionNews" value="<%= data[0].descriptionNews %>">
+            </p>
+            <button type="submit" id="editNews">Редактировать новость</button>
+            <button type="submit" id="deleteNews">Удалить новость</button>
+            <p><a href="http://localhost:3000/admin/news/">Вернуться к списку новостей</a></p>
+        </form>
+    </div>
+
+    <script>
+        document.querySelector("#editNews").onclick = function(){
+            event.preventDefault();
+            let one_news = {
+                'idNews':location.href.split("/").at(-1),
+                'titleNews': document.querySelector("#titleNews").value,
+                'textNews': document.querySelector("#textNews").value,
+                'descriptionNews': document.querySelector("#descriptionNews").value,
+            }
+            let promise = fetch('http://localhost:3000/admin/news/editNews', {
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                body: JSON.stringify(one_news)
+            })
+            .then(response=> document.location.reload())
+            .then(response=> alert("Данные изменены"))
+            .catch(response=> alert("error: " + response));
+        }
+
+        document.querySelector("#deleteNews").onclick = function(){
+            event.preventDefault();
+            let one_news={
+                'idNews': location.href.split("/").at(-1),
+            }
+            let promise = fetch('http://localhost:3000/admin/news/deleteNews', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                body: JSON.stringify(one_news)
+            })
+            .then(response=> document.location="http://localhost:3000/admin/news/")
+            .catch((error)=>{
+                console.log(error);
+            });
+        }
+    </script>
+
+</body>
+</html>
