@@ -6,7 +6,7 @@ exports.addArticle = function (request, response){
 
 exports.getArticleAll = async function (req, res){
     let m = await Models.getAll();
-    res.render('articles',{data:m});
+    res.render('articles', {data:m});
 };
 
 exports.getArticle = async function (req, res){

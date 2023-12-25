@@ -2,7 +2,8 @@ const { fileLoader } = require("ejs");
 const connection = require("../mysql.js");
 const { response } = require("express");
 
-exports.getAll = async function(req, res){
+
+exports.getAll = async function getA(req, res){
     let arr = [];
     console.log("adminModel getAll");
     await connection.query("SELECT * FROM article")
@@ -18,7 +19,7 @@ exports.getAll = async function(req, res){
     return arr;
 }
 
-exports.getOne = async function(req, res){
+exports.getOne = async function get(req, res){
     let arr = [];
     let sql = "SELECT * FROM article WHERE idArticle=?";
     filter = [req];
@@ -35,9 +36,9 @@ exports.getOne = async function(req, res){
     return arr;
 }
 
-exports.addOne = async function(req, res){
-    let sql = "INSERT INTO article VALUES (?, ?, ?)";
-    console.log("АААААААААААААААААААААА: " + req.idArticle + req.titleArticle + " : " + req.textArticle + " : " + req.description);
+exports.addOne = async function add(req, res){
+    let sql = "INSERT INTO article VALUES ('', ?, ?, ?)";
+    console.log("adminModel addOne: " + req.idArticle + " : "+ req.titleArticle + " : " + req.textArticle + " : " + req.description);
     filter = [req.titleArticle, req.textArticle, req.description];
     console.log("adminModel addOne: " + req.titleArticle)
     await connection.query(sql, filter)
@@ -48,11 +49,11 @@ exports.addOne = async function(req, res){
     });
 }
 
-exports.editOne = async function(req, res){
+exports.editOne = async function edit(req, res){
     let arr = [];
     let sql = "UPDATE article SET titleArticle=?, textArticle=?, descriptionArticle=? WHERE idArticle=?";
     filter = [req.titleArticle, req.textArticle, req.description, req.idArticle];
-    console.log("admindModel editOne: " + req.description);
+    console.log("admindModel editOne: req.description = " + req.description);
     await connection.query(sql, filter)
     .then(data =>{
         for (let i = 0; i < data[0].length; i++) {
@@ -66,12 +67,13 @@ exports.editOne = async function(req, res){
     return arr;
 }
 
-exports.deleteOne = async function(req, res){
+exports.deleteOne = async function del(req, res){
     console.log("adminModel deleteOne");
-    console.log(req);
-    let sql = "DELETE FROM article WHERE idArticle=?";
+    console.log("adminModel: req = " + req);
+    // let sql = "DELETE FROM article WHERE idArticle=?";
     filter = [req];
-    await connection.query(sql, filter)
+    // await connection.query(sql, filter)
+    await connection.query(`DELETE FROM article WHERE idArticle=${req}`)
     .then(response => {
         console.log("OK");
     });

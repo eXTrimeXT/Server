@@ -43,6 +43,7 @@
                 },
                 body: JSON.stringify(article)
             })
+            .then(response=> document.location.reload())
             .then(response=> alert("Данные изменены"))
             .catch(response=> alert("error: " + response));
         }
@@ -60,6 +61,7 @@
                 body: JSON.stringify(article)
             })
             .then(response=> document.location="http://localhost:3000/admin/")
+            .then(response=> console.log("adminArticleShow.ejs"))
             .catch((error)=>{
                 console.log(error);
             });

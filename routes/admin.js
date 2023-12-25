@@ -8,9 +8,9 @@ const jsonParser = express.json();
 // Контроллеры для админ панели
 router.get('/', adminController.getArticleAll);
 router.get('/:idArticle', adminController.getArticle);
-router.post('/:addArticle', adminController.addArticle);
-//router.post('/:editArticle', adminController.editArticle);
-//router.post('/:deleteArticle', adminController.deleteArticle);
+router.post('/addArticle', adminController.addArticle);
+router.post('/editArticle', adminController.editArticle);
+router.post('/deleteArticle', adminController.deleteArticle);
 
 
 console.log('route/admin');
