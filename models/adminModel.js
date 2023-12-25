@@ -3,7 +3,7 @@ const connection = require("../mysql.js");
 const { response } = require("express");
 
 
-exports.getAll = async function getA(req, res){
+exports.getAll = async function(req, res){
     let arr = [];
     console.log("adminModel getAll");
     await connection.query("SELECT * FROM article")
@@ -19,7 +19,7 @@ exports.getAll = async function getA(req, res){
     return arr;
 }
 
-exports.getOne = async function get(req, res){
+exports.getOne = async function(req, res){
     let arr = [];
     let sql = "SELECT * FROM article WHERE idArticle=?";
     filter = [req];
@@ -36,7 +36,7 @@ exports.getOne = async function get(req, res){
     return arr;
 }
 
-exports.addOne = async function add(req, res){
+exports.addOne = async function(req, res){
     let sql = "INSERT INTO article VALUES ('', ?, ?, ?)";
     console.log("adminModel addOne: " + req.idArticle + " : "+ req.titleArticle + " : " + req.textArticle + " : " + req.description);
     filter = [req.titleArticle, req.textArticle, req.description];
@@ -49,7 +49,7 @@ exports.addOne = async function add(req, res){
     });
 }
 
-exports.editOne = async function edit(req, res){
+exports.editOne = async function(req, res){
     let arr = [];
     let sql = "UPDATE article SET titleArticle=?, textArticle=?, descriptionArticle=? WHERE idArticle=?";
     filter = [req.titleArticle, req.textArticle, req.description, req.idArticle];
@@ -67,7 +67,7 @@ exports.editOne = async function edit(req, res){
     return arr;
 }
 
-exports.deleteOne = async function del(req, res){
+exports.deleteOne = async function(req, res){
     console.log("adminModel deleteOne");
     console.log("adminModel: req = " + req);
     // let sql = "DELETE FROM article WHERE idArticle=?";
