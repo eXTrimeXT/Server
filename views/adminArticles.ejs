@@ -38,7 +38,6 @@
                 'textArticle': document.querySelector("#textArticle").value,
                 'descriptionArticle': document.querySelector("#descriptionArticle").value,
             }
-            console.log(article);
             let promise = fetch('http://localhost:3000/admin/articles/addArticle', {
                 method: 'POST',
                 headers:{

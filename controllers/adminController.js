@@ -33,7 +33,7 @@ exports.deleteArticle = async function(req, res){
 // Управление новостями
 exports.getNewsAll = async function(req, res){
     let m = await Models.getAllNews();
-    res.render('adminArticles', {data:m});
+    res.render('adminNews', {data:m});
 };
 
 exports.getNews = async function(req, res){
@@ -48,13 +48,13 @@ exports.addNews = async function(req, res){
 };
 
 exports.editNews = async function(req, res){
-    await Models.editOneArticle(req.body);
-    let m = await Models.getOneArticle(req.body.idNews);
+    await Models.editOneNews(req.body);
+    let m = await Models.getOneNews(req.body.idNews);
     res.render('adminNewsShow', {data:m});
 };
 
 exports.deleteNews = async function(req, res){
-    await Models.deleteOneArticle(req.body.idNews);
-    let m = await Models.getAllArticle();
+    await Models.deleteOneNews(req.body.idNews);
+    let m = await Models.getAllNews();
     res.render('adminNews', {data:m});
 };
