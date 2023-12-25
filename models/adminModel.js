@@ -2,15 +2,13 @@ const { fileLoader } = require("ejs");
 const connection = require("../mysql.js");
 const { response } = require("express");
 
-
-exports.getAll = async function(req, res){
+// Логика управления статьями
+exports.getAllArticle = async function(req, res){
     let arr = [];
-    console.log("adminModel getAll");
     await connection.query("SELECT * FROM article")
     .then(data => {
         for (let i = 0; i < data[0].length; i++) {
             arr[i] = data[0][i];
-            console.log(i + " : " + arr[i]);
         }
     })
     .catch(err => {
@@ -19,11 +17,10 @@ exports.getAll = async function(req, res){
     return arr;
 }
 
-exports.getOne = async function(req, res){
+exports.getOneArticle = async function(req, res){
     let arr = [];
     let sql = "SELECT * FROM article WHERE idArticle=?";
     filter = [req];
-    console.log("adminModel getOne: " + req);
     await connection.query(sql, filter)
     .then(data => {
         for (let i = 0; i < data[0].length; i++) {
@@ -36,11 +33,9 @@ exports.getOne = async function(req, res){
     return arr;
 }
 
-exports.addOne = async function(req, res){
+exports.addOneArticle = async function(req, res){
     let sql = "INSERT INTO article VALUES ('', ?, ?, ?)";
-    console.log("adminModel addOne: " + req.idArticle + " : "+ req.titleArticle + " : " + req.textArticle + " : " + req.description);
     filter = [req.titleArticle, req.textArticle, req.description];
-    console.log("adminModel addOne: " + req.titleArticle)
     await connection.query(sql, filter)
     .then(data =>{  
     })
@@ -49,17 +44,15 @@ exports.addOne = async function(req, res){
     });
 }
 
-exports.editOne = async function(req, res){
+exports.editOneArticle = async function(req, res){
     let arr = [];
     let sql = "UPDATE article SET titleArticle=?, textArticle=?, descriptionArticle=? WHERE idArticle=?";
     filter = [req.titleArticle, req.textArticle, req.description, req.idArticle];
-    console.log("admindModel editOne: req.description = " + req.description);
     await connection.query(sql, filter)
     .then(data =>{
         for (let i = 0; i < data[0].length; i++) {
             arr[i] = data[0][i];
         }
-        console.log("editOne adminModel.js");
     })
     .catch(err => {
         console.log("ERROR: " + err);
@@ -67,15 +60,79 @@ exports.editOne = async function(req, res){
     return arr;
 }
 
-exports.deleteOne = async function(req, res){
-    console.log("adminModel deleteOne");
-    console.log("adminModel: req = " + req);
-    // let sql = "DELETE FROM article WHERE idArticle=?";
+exports.deleteOneArticle = async function(req, res){
+    let sql = "DELETE FROM article WHERE idArticle=?";
     filter = [req];
-    // await connection.query(sql, filter)
-    await connection.query(`DELETE FROM article WHERE idArticle=${req}`)
+    await connection.query(sql, filter)
     .then(response => {
         console.log("OK");
     });
-    console.log("adminModel deleteOne");
+}
+
+
+// Логика управления новостями
+exports.getAllNews = async function(req, res){
+    let arr = [];
+    await connection.query("SELECT * FROM news")
+    .then(data => {
+        for (let i = 0; i < data[0].length; i++) {
+            arr[i] = data[0][i];
+        }
+    })
+    .catch(err => {
+        console.log(err);
+    });
+    return arr;
+}
+
+exports.getOneNews = async function(req, res){
+    let arr = [];
+    let sql = "SELECT * FROM news WHERE idNews=?";
+    filter = [req];
+    await connection.query(sql, filter)
+    .then(data => {
+        for (let i = 0; i < data[0].length; i++) {
+            arr[i] = data[0][i];
+        }
+    })
+    .catch(err=> {
+        console.log(err);
+    });
+    return arr;
+}
+
+exports.addOneNews = async function(req, res){
+    let sql = "INSERT INTO news VALUES ('', ?, ?, ?)";
+    filter = [req.titleNews, req.textNews, req.descriptionNews];
+    await connection.query(sql, filter)
+    .then(data =>{  
+    })
+    .catch(err =>{
+        console.log(err);
+    });
+}
+
+exports.editOneNews = async function(req, res){
+    let arr = [];
+    let sql = "UPDATE news SET titleNews=?, textNews=?, descriptionNews=? WHERE idNews=?";
+    filter = [req.titleNews, req.textNews, req.descriptionNews, req.idNews];
+    await connection.query(sql, filter)
+    .then(data =>{
+        for (let i = 0; i < data[0].length; i++) {
+            arr[i] = data[0][i];
+        }
+    })
+    .catch(err => {
+        console.log("ERROR: " + err);
+    });
+    return arr;
+}
+
+exports.deleteOneNews = async function(req, res){
+    let sql = "DELETE FROM news WHERE idNews=?";
+    filter = [req];
+    await connection.query(sql, filter)
+    .then(response => {
+        console.log("OK");
+    });
 }

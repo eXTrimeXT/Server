@@ -6,12 +6,20 @@ var urlencodedParser = bodyParser.urlencoded({extended : false});
 const jsonParser = express.json();
 
 // Контроллеры для админ панели
+// Управление Статьями
 router.get('/', adminController.getArticleAll);
 router.get('/:idArticle', adminController.getArticle);
 router.post('/addArticle', adminController.addArticle);
 router.post('/editArticle', adminController.editArticle);
 router.post('/deleteArticle', adminController.deleteArticle);
 
+
+// Управление Статьями
+router.get('/', adminController.getArticleAll);
+router.get('/:idArticle', adminController.getArticle);
+router.post('/addArticle', adminController.addArticle);
+router.post('/editArticle', adminController.editArticle);
+router.post('/deleteArticle', adminController.deleteArticle);
 
 console.log('route/admin');
 
