@@ -35,7 +35,7 @@
             let article = {
                 'titleArticle': document.querySelector("#titleArticle").value,
                 'textArticle': document.querySelector("#textArticle").value,
-                'descriptionArticle': document.querySelector("#descriptionArticle").value,
+                'description': document.querySelector("#descriptionArticle").value,
             }
             console.log(article);
             let promise = fetch('http://localhost:3000/admin/addArticle', {
