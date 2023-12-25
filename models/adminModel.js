@@ -36,8 +36,8 @@ exports.getOne = async function(req, res){
 }
 
 exports.addOne = async function(req, res){
-    let sql = "INSERT INTO article VALUES (?, ?, ?)";
-    console.log("АААААААААААААААААААААА: " + req.idArticle + req.titleArticle + " : " + req.textArticle + " : " + req.description);
+    let sql = "INSERT INTO article VALUES ('',?, ?, ?)";
+    console.log("АААААААААААААААААААААА: " + req.idArticle + " : " + req.titleArticle + " : " + req.textArticle + " : " + req.description);
     filter = [req.titleArticle, req.textArticle, req.description];
     console.log("adminModel addOne: " + req.titleArticle)
     await connection.query(sql, filter)
