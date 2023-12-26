@@ -5,7 +5,7 @@ exports.addNews = function (request, response){
 };
 
 exports.getNewsAll = async function (req, res){
-    let m = await Models.getAll();
+    let m = await Models.getAllNews();
     res.render('news', {data:m});
 };
 
