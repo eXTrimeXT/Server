@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="/css/1.css">
-    <!-- test -->
     <meta charset="UTF-8">
 </head>
 <body>
@@ -19,16 +18,16 @@
 
         <form action="http://localhost:3000/admin/articles/addArticle" method="post">
             <label for="titleArticle">Название статьи</label>
-            <input type="text" name="titleArticle" id="titleArticle" required>
+            <input type="text" name="titleArticle" id="titleArticle" required class="inputs">
             <p>
                 <label for="textArticle">Текст статьи</label>
-                <textarea rows="10" cols="30" name = "textArticle" id="textArticle"></textarea>
+                <textarea rows="10" cols="30" name = "textArticle" id="textArticle" class="textStyle"></textarea>
             </p>
             <p>
                 <label for="descriptionArticle">Описание статьи</label>
-                <input type="text" name="descriptionArticle" id="descriptionArticle">
+                <input type="text" name="descriptionArticle" id="descriptionArticle" class="inputs">
             </p>
-            <button type="submit" id="sendArticle" class = "c-button">Создать статью</button>
+            <button type="submit" id="sendArticle" class = "create_button">Создать статью</button>
         </form>
     </div>
     <script>

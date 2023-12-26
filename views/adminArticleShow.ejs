@@ -13,17 +13,17 @@
         <h2>Изменить статью</h2>
         <form action="http://localhost:3000/admin/articles/editArticle" method="post">
             <label for="titleArticle">Название статьи</label>
-            <input type="text" name="titleArticle" id="titleArticle" required value="<%= data[0].titleArticle %>">
+            <input type="text" name="titleArticle" id="titleArticle" required value="<%= data[0].titleArticle %>" class="inputs">
             <p>
                 <label for="textArticle">Текст статьи</label>
-                <textarea rows="10" cols="30" id="textArticle"><%= data[0].textArticle %></textarea>
+                <textarea rows="10" cols="30" id="textArticle" class="textStyle"><%= data[0].textArticle %></textarea>
             </p>
             <p>
                 <label for="descriptionArticle">Описание статьи</label>
-                <input type="text" name="descriptionArticle" id="descriptionArticle" value="<%= data[0].descriptionArticle %>">
+                <input type="text" name="descriptionArticle" id="descriptionArticle" value="<%= data[0].descriptionArticle %>" class="inputs">
             </p>
-            <button type="submit" id="editArticle">Редактировать статью</button>
-            <button type="submit" id="deleteArticle">Удалить статью</button>
+            <button type="submit" id="editArticle" class="edit_button">Редактировать статью</button>
+            <button type="submit" id="deleteArticle" class="delete_button">Удалить статью</button>
             <p><a href="http://localhost:3000/admin/articles/">Вернуться к списку статей</a></p>
         </form>
     </div>

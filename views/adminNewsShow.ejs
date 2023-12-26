@@ -13,17 +13,17 @@
         <h2>Изменить новость</h2>
         <form action="http://localhost:3000/admin/news/editNews" method="post">
             <label for="titleNews">Название новости</label>
-            <input type="text" name="titleNews" id="titleNews" required value="<%= data[0].titleNews %>">
+            <input type="text" name="titleNews" id="titleNews" required value="<%= data[0].titleNews %>" class="inputs">
             <p>
                 <label for="textNews">Текст новости</label>
-                <textarea rows="10" cols="30" id="textNews"><%= data[0].textNews %></textarea>
+                <textarea rows="10" cols="30" id="textNews" class="textStyle"><%= data[0].textNews %></textarea>
             </p>
             <p>
                 <label for="descriptionNews">Описание новости</label>
-                <input type="text" name="descriptionNews" id="descriptionNews" value="<%= data[0].descriptionNews %>">
+                <input type="text" name="descriptionNews" id="descriptionNews" value="<%= data[0].descriptionNews %>" class="inputs">
             </p>
-            <button type="submit" id="editNews">Редактировать новость</button>
-            <button type="submit" id="deleteNews">Удалить новость</button>
+            <button type="submit" id="editNews" class="edit_button">Редактировать новость</button>
+            <button type="submit" id="deleteNews" class="delete_button">Удалить новость</button>
             <p><a href="http://localhost:3000/admin/news/">Вернуться к списку новостей</a></p>
         </form>
     </div>

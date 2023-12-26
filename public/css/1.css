@@ -1,19 +1,14 @@
 .forms{
-    border: 4px dashed  rgb(224, 179, 217) ;
-    /* border-top: groove rgb(255, 0, 0);
-    border-bottom: dashed rgba(49, 241, 31);
-    border-left: dashed rgba(49, 241, 31);
-    border-right: dotted rgba(49, 241, 31); */
+    border: 5px dashed  rgb(255, 0, 0) ;
     padding: 10px;
     width: max-content;
-    margin-left: 525px;
-
+    margin-left: 39%;
 }
 
 body{
     font-size: larger, solid;
-    background-image: linear-gradient(120deg, rgb(170, 214, 242), rgb(182, 244, 180));
-    font-size: 1.8rem;
+    background-image: linear-gradient(120deg, rgb(250, 189, 118), rgb(204, 255, 0));
+    font-size: 1.4rem;
     text-align: center;
     height:800px;
     word-wrap: break-word;
@@ -22,16 +17,48 @@ body{
 label{
     text-decoration: underline;
 }
-.c-button {
+.create_button {
     appearance: none;
     border: 0;
-    border-radius: 5px;
-    background: #4676D7;
+    border-radius: 20px;
+    background: rgb(66, 41, 41);;
+    color: white;
+    padding: 8px 16px;
+    font-size: 16px;
+}
+.create_button:hover{
+    background-color: rgb(64, 124, 173);
+}
+
+.edit_button {
+    appearance: none;
+    border: 0;
+    border-radius: 20px;
+    background: rgb(135, 68, 68);
+    color: white;
+    padding: 8px 16px;
+    font-size: 16px;
+}
+.edit_button:hover{
+    background-color: red;
+}
+
+.delete_button {
+    appearance: none;
+    border: 0;
+    border-radius: 20px;
+    background: rgb(224, 108, 108);
     color: #fff;
     padding: 8px 16px;
     font-size: 16px;
-    
 }
-.c-button:hover{
-    background-color: blue;
+.delete_button:hover{
+    background-color: red;
+}
+
+.textStyle {
+    background: rgb(86, 227, 124);
+}
+.inputs {
+    background: rgb(86, 227, 124);
 }

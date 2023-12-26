@@ -17,16 +17,16 @@
 
         <form action="http://localhost:3000/admin/news/addNews" method="post">
             <label for="titleNews">Название новости</label>
-            <input type="text" name="titleNews" id="titleNews" required>
+            <input type="text" name="titleNews" id="titleNews" required class="inputs">
             <p>
                 <label for="textNews">Текст новости</label>
-                <textarea rows="10" cols="30" name = "textNews" id="textNews"></textarea>
+                <textarea rows="10" cols="30" name = "textNews" id="textNews" class="textStyle"></textarea>
             </p>
             <p>
                 <label for="descriptionNews">Описание новости</label>
-                <input type="text" name="descriptionNews" id="descriptionNews">
+                <input type="text" name="descriptionNews" id="descriptionNews" class="inputs">
             </p>
-            <button type="submit" id="sendNews" class="c-button">Создать новость</button>
+            <button type="submit" id="sendNews" class="create_button">Создать новость</button>
         </form>
     </div>
     <script>
